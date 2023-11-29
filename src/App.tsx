@@ -1,8 +1,7 @@
-import React from "react";
-import Pokemon from "./components/Pokemon";
+import PokemonRouter from "./components/PokemonRouter";
 
 const App = () => {
-  return <Pokemon />;
+  return <PokemonRouter />;
 };
 
 export default App;
