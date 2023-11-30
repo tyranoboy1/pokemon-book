@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import pokemonImg from "../../assets/img/pokemon-header.jpg";
+
 /** Pokemon Home css */
+
 export const PokemonBook = styled.div`
   width: 100%;
   height: 100%;
@@ -9,8 +10,8 @@ export const PokemonBook = styled.div`
   place-items: center;
 `;
 export const Card = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 250px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -72,4 +73,15 @@ export const Text = styled.span<{
 }>`
   font-size: ${(props) => props.fontSize || "16px"};
   font-weight: ${(props) => props.fontWeight || "normal"};
+`;
+export const PokemonSearchInputBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+`;
+
+export const PokemonSearchInput = styled.input`
+  width: 50%;
+  height: 50px;
 `;

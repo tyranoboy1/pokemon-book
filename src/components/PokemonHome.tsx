@@ -1,14 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  Card,
   PokemonBook,
-  PokemonImg,
-  PokemonNameBox,
-  PokemonTagBox,
-  Text,
+  PokemonSearchInput,
+  PokemonSearchInputBox,
   TitleText,
 } from "./styles/pokemon.styles";
+import PokemonCard from "./PokemonCard";
 const PokemonHome = () => {
   const [data, setData] = useState<any>([]);
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
@@ -41,20 +39,11 @@ const PokemonHome = () => {
   return (
     <>
       <TitleText>포켓몬 도감</TitleText>
+      <PokemonSearchInputBox>
+        <PokemonSearchInput />
+      </PokemonSearchInputBox>
       <PokemonBook>
-        {data.map((pokemon: any) => (
-          <Card key={pokemon.id}>
-            <PokemonTagBox>
-              <Text fontSize="20px" fontWeight="600">{`PN ${pokemon.id}`}</Text>
-            </PokemonTagBox>
-            <PokemonImg src={pokemon.image} alt={pokemon.name}></PokemonImg>
-            <PokemonNameBox>
-              <Text fontSize="30px" fontWeight="600">
-                {pokemon.name}
-              </Text>
-            </PokemonNameBox>
-          </Card>
-        ))}
+        <PokemonCard pokemonData={data} />
       </PokemonBook>
     </>
   );
