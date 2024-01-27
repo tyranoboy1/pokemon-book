@@ -6,18 +6,21 @@ export const PokemonBook = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   place-items: center;
 `;
 export const Card = styled.div`
   width: 300px;
-  height: 250px;
+  height: 300px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #c0c0c0;
-  border-radius: 5%;
+  background-color: #f1eeff;
+  border-radius: 16px;
+  max-width: 300px;
+  box-shadow: 0 30px 30px -25px rgba("#4133b7", 0.25);
+  padding: 10px;
 `;
 export const PokemonImg = styled.img`
   width: 100%;
@@ -29,6 +32,7 @@ export const PokemonTagBox = styled.div`
   width: 100%;
   height: 20%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   & > span {
     margin-left: 5px;
@@ -44,10 +48,37 @@ export const TitleText = styled.div`
   font-size: 30px;
   display: flex;
   padding: 30px 0;
-
   justify-content: center;
 `;
 
+export const DetailButton = styled.button`
+  font: inherit;
+  border-radius: 6px;
+  display: flex;
+  width: 70px;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border: 2px solid #4133b7;
+  align-self: flex-end;
+  color: #4133b7;
+  > p {
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  &:hover,
+  &:focus {
+    background-color: #4133b7;
+    color: #fff;
+  }
+`;
+
+export const TopBar = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+`;
 /** Layout css */
 export const PokemonBookContainer = styled.div`
   margin: 0 auto;
