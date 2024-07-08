@@ -12,7 +12,7 @@ import { GoHeartFill } from "react-icons/go";
 import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 interface IPokemonCardProps {
-  pokemonData: IPokemonData[];
+  pokemonData?: IPokemonData[];
 }
 interface IPokemonData {
   id: number;
@@ -35,10 +35,14 @@ const PokemonCard = (props: IPokemonCardProps) => {
 
   return (
     <>
-      {pokemonData.map((pokemon) => (
+      {pokemonData?.map((pokemon) => (
         <Card key={pokemon.id}>
           <PokemonTagBox>
-            <Text fontSize="20px" fontWeight="600">{`PN ${pokemon.id}`}</Text>
+            <Text
+              fontSize="14px"
+              fontWeight="700"
+              fontFamily="Galmuri"
+            >{`PN.${pokemon.id}`}</Text>
             {hearts[pokemon.id] ? (
               <GoHeartFill
                 size={25}
@@ -57,7 +61,7 @@ const PokemonCard = (props: IPokemonCardProps) => {
           </PokemonTagBox>
           <PokemonImg src={pokemon.image} alt={pokemon.name}></PokemonImg>
           <PokemonNameBox>
-            <Text fontSize="30px" fontWeight="600">
+            <Text fontSize="20px" fontWeight="700" fontFamily="Galmuri14">
               {pokemon.name}
             </Text>
           </PokemonNameBox>

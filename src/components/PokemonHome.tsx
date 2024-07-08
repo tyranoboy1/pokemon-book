@@ -2,28 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   PokemonBook,
+  PokemonCardBox,
   PokemonSearchInput,
   PokemonSearchInputBox,
-  TitleText,
-  TopBar,
 } from "./styles/pokemon.styles";
 import PokemonCard from "./PokemonCard";
-import { FaBookOpen } from "react-icons/fa6";
 import { IPokemonData } from "./interface/pokemon.interface";
-import { useNavigate } from "react-router-dom";
+import PokemonBookHeader from "../layout/PokemonBookHeader";
 const PokemonHome = () => {
   const [data, setData] = useState<any>([]);
-  const navigate = useNavigate();
+
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
-  const url1 = "https://pokeapi.co/api/v2/pokemon-species/1";
 
   useEffect(() => {
     const getPokemonInfo = async () => {
       try {
         const response = await axios.get(url);
-        // const response1 = await axios.get(url1);
-        console.log("response", response);
-        // console.log("response1", response1);
+
         const testPokemon = response.data.results.map(
           (item: IPokemonData, idx: number) => {
             return {
@@ -43,20 +38,16 @@ const PokemonHome = () => {
     getPokemonInfo();
   }, []);
 
-  useEffect(() => {
-    console.log("data", data);
-  });
   return (
     <>
-      <TitleText>포켓몬 도감</TitleText>
-      <TopBar>
-        <FaBookOpen size={50} onClick={() => navigate("/pokemon-mybook")} />
-      </TopBar>
-      <PokemonSearchInputBox>
-        {/* <PokemonSearchInput /> */}
-      </PokemonSearchInputBox>
+      <PokemonBookHeader />
       <PokemonBook>
-        <PokemonCard pokemonData={data} />
+        <PokemonSearchInputBox>
+          <PokemonSearchInput placeholder="포켓몬 검색" />
+        </PokemonSearchInputBox>
+        <PokemonCardBox>
+          <PokemonCard pokemonData={data} />
+        </PokemonCardBox>
       </PokemonBook>
     </>
   );

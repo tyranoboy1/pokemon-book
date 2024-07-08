@@ -1,24 +1,25 @@
 import styled from "styled-components";
+import search from "../../assets/svg/search.svg";
 
 /** Pokemon Home css */
-
 export const PokemonBook = styled.div`
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #d3d3d3;
+  padding: 30px;
 `;
 export const Card = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 330px;
+  height: 230px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f1eeff;
   border-radius: 16px;
-  max-width: 300px;
+
   box-shadow: 0 30px 30px -25px rgba("#4133b7", 0.25);
   padding: 10px;
 `;
@@ -43,14 +44,14 @@ export const PokemonNameBox = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const TitleText = styled.div`
+export const PokemonCardBox = styled.div`
   width: 100%;
-  font-size: 30px;
+  height: 100%;
   display: flex;
-  padding: 30px 0;
   justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 `;
-
 export const DetailButton = styled.button`
   font: inherit;
   border-radius: 6px;
@@ -89,21 +90,47 @@ export const PokemonHeader = styled.div`
   height: 100px;
   background-color: #c0c0c0;
 `;
-export const PokemonHeaderImg = styled.img`
+export const HeaderBox = styled.div`
   width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  object-position: center;
-  /* 이미지를 중앙에 위치 */
+  display: flex;
+  height: 100px;
+  padding: 0px 40px;
+  justify-content: space-between;
+  align-items: center;
+  > p {
+    flex: 2;
+    font-size: 30px;
+    font-family: "Galmuri", sans-serif;
+  }
 `;
+export const TranslateBox = styled.div`
+  flex: 1;
+  gap: 15px;
+  display: flex;
+  justify-content: flex-end;
+  > img {
+    width: 30px;
+    height: 30px;
+  }
+`;
+export const LanguageButton = styled.button`
+  border-radius: 50%;
+  &:hover {
+    background-color: #cfffe5;
+  }
+  font-size: 15px;
+  font-weight: 700;
+`;
+
 /** Common css */
 export const Text = styled.span<{
   fontSize?: string;
   fontWeight?: string;
+  fontFamily?: string;
 }>`
   font-size: ${(props) => props.fontSize || "16px"};
   font-weight: ${(props) => props.fontWeight || "normal"};
+  font-family: ${(props) => props.fontFamily || ""};
 `;
 export const PokemonSearchInputBox = styled.div`
   width: 100%;
@@ -115,4 +142,12 @@ export const PokemonSearchInputBox = styled.div`
 export const PokemonSearchInput = styled.input`
   width: 50%;
   height: 50px;
+  border-radius: 14px;
+  padding: 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+  background-image: url(${search});
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 30px 50px; // 배경 이미지 크기 지정
 `;
