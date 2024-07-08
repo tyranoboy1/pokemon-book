@@ -8,70 +8,33 @@ import {
   Text,
 } from "./styles/pokemon.styles";
 import { FaChevronRight } from "react-icons/fa";
-import { GoHeartFill } from "react-icons/go";
-import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-interface IPokemonCardProps {
-  pokemonData?: IPokemonData[];
-}
-interface IPokemonData {
-  id: number;
-  name: string;
-  image: string;
-}
+import { IPokemonInfo } from "./interface/pokemon.interface";
 
-const PokemonCard = (props: IPokemonCardProps) => {
-  const { pokemonData } = props;
+const PokemonCard = (props: IPokemonInfo) => {
+  const { id, image, name } = props;
   const navigate = useNavigate();
-  const [hearts, setHearts] = useState<{ [key: number]: boolean }>({});
-
-  /** 하트를 누르는 함수 */
-  const heartClick = (pokemonId: number) => {
-    setHearts((prevHearts) => ({
-      ...prevHearts,
-      [pokemonId]: !prevHearts[pokemonId],
-    }));
-  };
 
   return (
-    <>
-      {pokemonData?.map((pokemon) => (
-        <Card key={pokemon.id}>
-          <PokemonTagBox>
-            <Text
-              fontSize="14px"
-              fontWeight="700"
-              fontFamily="Galmuri"
-            >{`PN.${pokemon.id}`}</Text>
-            {hearts[pokemon.id] ? (
-              <GoHeartFill
-                size={25}
-                style={{ marginRight: "3px", marginBottom: "5px" }}
-                onClick={() => heartClick(pokemon.id)}
-                cursor="pointer"
-              />
-            ) : (
-              <FiHeart
-                size={25}
-                style={{ marginRight: "3px", marginBottom: "5px" }}
-                onClick={() => heartClick(pokemon.id)}
-                cursor="pointer"
-              />
-            )}
-          </PokemonTagBox>
-          <PokemonImg src={pokemon.image} alt={pokemon.name}></PokemonImg>
-          <PokemonNameBox>
-            <Text fontSize="20px" fontWeight="700" fontFamily="Galmuri14">
-              {pokemon.name}
-            </Text>
-          </PokemonNameBox>
-          <DetailButton onClick={() => navigate("/pokemon-detail")}>
-            <p>More</p>
-            <FaChevronRight />
-          </DetailButton>
-        </Card>
-      ))}
-    </>
+    <Card key={id}>
+      <PokemonTagBox>
+        <Text
+          fontSize="14px"
+          fontWeight="700"
+          fontFamily="Galmuri"
+        >{`PN.${id}`}</Text>
+      </PokemonTagBox>
+      <PokemonImg src={image} alt={image}></PokemonImg>
+      <PokemonNameBox>
+        <Text fontSize="20px" fontWeight="700" fontFamily="Galmuri14">
+          {name}
+        </Text>
+      </PokemonNameBox>
+      <DetailButton onClick={() => navigate("/pokemon-detail")}>
+        <p>More</p>
+        <FaChevronRight />
+      </DetailButton>
+    </Card>
   );
 };
 

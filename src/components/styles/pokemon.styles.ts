@@ -9,6 +9,7 @@ export const PokemonBook = styled.div`
   flex-direction: column;
   background-color: #d3d3d3;
   padding: 30px;
+  box-sizing: border-box;
 `;
 export const Card = styled.div`
   width: 330px;
