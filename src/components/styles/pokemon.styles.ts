@@ -8,6 +8,7 @@ export const PokemonBook = styled.div`
   display: flex;
   flex-direction: column;
   padding: 30px;
+  background-color: #b0a8a0;
   box-sizing: border-box;
 `;
 export const Card = styled.div`
@@ -18,9 +19,9 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d3d3d3;
   border-radius: 16px;
   padding: 10px;
+  background-color: #fff;
 `;
 export const PokemonImg = styled.img`
   width: 100%;
@@ -45,10 +46,16 @@ export const PokemonTypeContainer = styled.div`
   gap: 10px;
 `;
 export const PokemonTypeBox = styled.div<{ color?: string }>`
-  font-size: 15px;
-  border: 1px solid red;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid ${(props) => props.color || ""};
+  background-color: ${(props) => props.color || ""};
   border-radius: 12px;
-  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
 `;
 export const PokemonNameBox = styled.div`
   width: 100%;

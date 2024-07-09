@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { IPokemonInfo } from "./interface/pokemon.interface";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { getTypeColor } from "../utils/pokemonUtil";
 
 const PokemonCard = (props: IPokemonInfo) => {
   const { id } = props;
@@ -40,7 +41,12 @@ const PokemonCard = (props: IPokemonInfo) => {
         >{`PN.${id}`}</Text>
         <PokemonTypeContainer>
           {data?.types?.map((item: any) => (
-            <PokemonTypeBox key={item.slot}>{item.type.name}</PokemonTypeBox>
+            <PokemonTypeBox
+              key={item.slot}
+              color={getTypeColor(item.type.name)}
+            >
+              {item.type.name}
+            </PokemonTypeBox>
           ))}
         </PokemonTypeContainer>
       </PokemonTagBox>
