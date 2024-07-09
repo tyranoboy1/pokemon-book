@@ -10,15 +10,14 @@ import PokemonCard from "./PokemonCard";
 import PokemonBookHeader from "../layout/PokemonBookHeader";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  IPokemonCardInfo,
-  IPokemonData,
-  IPokemonInfo,
-} from "./interface/pokemon.interface";
+import { IPokemonData, IPokemonInfo } from "./interface/pokemon.interface";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const PokemonHome = () => {
+  const [open, setOpen] = useState(false);
   const getPokemonData = async (pageParam: number) => {
-    const limit = 30; /** 한 페이지에 가져올 포캣몬 개수*/
+    const limit = 20; /** 한 페이지에 가져올 포캣몬 개수*/
     const offset = (pageParam - 1) * limit; /** 페이지당 offset 계산 */
     const res = await axios.get(
       `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
@@ -36,7 +35,7 @@ const PokemonHome = () => {
     };
   };
 
-  const { fetchNextPage, hasNextPage, isFetchingNextPage, data } =
+  const { fetchNextPage, hasNextPage, isFetchingNextPage, data, status } =
     useInfiniteQuery({
       queryKey: ["pokemon"],
       queryFn: ({ pageParam = 1 }) => getPokemonData(pageParam),
@@ -54,8 +53,10 @@ const PokemonHome = () => {
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const target = entries[0];
+
       if (target.isIntersecting && hasNextPage && !isFetchingNextPage) {
-        fetchNextPage();
+        setOpen(true);
+        fetchNextPage().then(() => setOpen(false));
       }
     },
     [fetchNextPage, hasNextPage, isFetchingNextPage]
@@ -65,6 +66,7 @@ const PokemonHome = () => {
     if (observer.current) observer.current.disconnect();
 
     observer.current = new IntersectionObserver(handleObserver);
+
     if (endPointRef.current) observer.current.observe(endPointRef.current);
 
     return () => {
@@ -93,6 +95,14 @@ const PokemonHome = () => {
         </PokemonCardBox>
       </PokemonBook>
       <div ref={endPointRef} />
+      {status === "pending" && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
     </>
   );
 };

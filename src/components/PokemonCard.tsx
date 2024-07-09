@@ -1,19 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   DetailButton,
   PokemonImg,
   PokemonNameBox,
   PokemonTagBox,
+  PokemonTypeBox,
+  PokemonTypeContainer,
   Text,
 } from "./styles/pokemon.styles";
 import { FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { IPokemonInfo } from "./interface/pokemon.interface";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const PokemonCard = (props: IPokemonInfo) => {
-  const { id, image, name } = props;
+  const { id } = props;
   const navigate = useNavigate();
+
+  const fetchPokemon = (id: number) => {
+    return axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then((res) => res.data);
+  };
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["pokemon", id],
+    queryFn: () => fetchPokemon(id),
+  });
 
   return (
     <Card key={id}>
@@ -23,16 +38,29 @@ const PokemonCard = (props: IPokemonInfo) => {
           fontWeight="700"
           fontFamily="Galmuri"
         >{`PN.${id}`}</Text>
+        <PokemonTypeContainer>
+          {data?.types?.map((item: any) => (
+            <PokemonTypeBox key={item.slot}>{item.type.name}</PokemonTypeBox>
+          ))}
+        </PokemonTypeContainer>
       </PokemonTagBox>
-      <PokemonImg src={image} alt={image}></PokemonImg>
+      <PokemonImg
+        src={
+          data?.sprites?.versions?.["generation-v"]?.["black-white"].animated
+            ?.front_default
+        }
+        alt="pokemonImg"
+      ></PokemonImg>
       <PokemonNameBox>
         <Text fontSize="20px" fontWeight="700" fontFamily="Galmuri14">
-          {name}
+          {data?.name}
         </Text>
       </PokemonNameBox>
       <DetailButton onClick={() => navigate("/pokemon-detail")}>
-        <p>More</p>
-        <FaChevronRight />
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+          alt="포켓볼"
+        />
       </DetailButton>
     </Card>
   );

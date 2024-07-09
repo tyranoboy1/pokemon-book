@@ -7,26 +7,24 @@ export const PokemonBook = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #d3d3d3;
   padding: 30px;
   box-sizing: border-box;
 `;
 export const Card = styled.div`
   width: 330px;
   height: 230px;
+  position: relative;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f1eeff;
+  background-color: #d3d3d3;
   border-radius: 16px;
-
-  box-shadow: 0 30px 30px -25px rgba("#4133b7", 0.25);
   padding: 10px;
 `;
 export const PokemonImg = styled.img`
   width: 100%;
-  height: 60%;
+  height: 50%;
   object-fit: contain; /* 이미지 비율 유지하면서 컨테이너 내에 맞춤 */
   object-position: center; /* 이미지를 중앙에 위치 */
 `;
@@ -40,9 +38,22 @@ export const PokemonTagBox = styled.div`
     margin-left: 5px;
   }
 `;
+export const PokemonTypeContainer = styled.div`
+  height: 100%;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+`;
+export const PokemonTypeBox = styled.div<{ color?: string }>`
+  font-size: 15px;
+  border: 1px solid red;
+  border-radius: 12px;
+  padding: 7px;
+`;
 export const PokemonNameBox = styled.div`
   width: 100%;
   display: flex;
+  margin-top: 20px;
   justify-content: center;
 `;
 export const PokemonCardBox = styled.div`
@@ -54,25 +65,18 @@ export const PokemonCardBox = styled.div`
   flex-wrap: wrap;
 `;
 export const DetailButton = styled.button`
-  font: inherit;
   border-radius: 6px;
+  position: absolute;
   display: flex;
-  width: 70px;
+  bottom: 10px;
   align-items: center;
   justify-content: center;
   height: 30px;
-  border: 2px solid #4133b7;
   align-self: flex-end;
-  color: #4133b7;
-  > p {
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 5px;
-  }
   &:hover,
   &:focus {
-    background-color: #4133b7;
-    color: #fff;
+    transform: translateY(-5px);
+    cursor: pointer;
   }
 `;
 
@@ -147,8 +151,9 @@ export const PokemonSearchInput = styled.input`
   padding: 0 10px;
   font-size: 15px;
   font-weight: 700;
+  background-color: #d3d3d3;
   background-image: url(${search});
   background-position: right 10px center;
   background-repeat: no-repeat;
-  background-size: 30px 50px; // 배경 이미지 크기 지정
+  background-size: 30px 50px;
 `;
