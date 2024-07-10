@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Card,
   DetailButton,
@@ -7,14 +6,14 @@ import {
   PokemonTagBox,
   PokemonTypeBox,
   PokemonTypeContainer,
+  PokemonTypeImg,
   Text,
 } from "./styles/pokemon.styles";
-import { FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { IPokemonInfo } from "./interface/pokemon.interface";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { getTypeColor } from "../utils/pokemonUtil";
+import { getTypeRenderImg } from "../utils/pokemonUtil";
 
 const PokemonCard = (props: IPokemonInfo) => {
   const { id } = props;
@@ -26,10 +25,12 @@ const PokemonCard = (props: IPokemonInfo) => {
       .then((res) => res.data);
   };
 
-  const { data, isLoading, isError } = useQuery({
+  const { data } = useQuery({
     queryKey: ["pokemon", id],
     queryFn: () => fetchPokemon(id),
   });
+
+  console.log("data", data);
 
   return (
     <Card key={id}>
@@ -41,11 +42,11 @@ const PokemonCard = (props: IPokemonInfo) => {
         >{`PN.${id}`}</Text>
         <PokemonTypeContainer>
           {data?.types?.map((item: any) => (
-            <PokemonTypeBox
-              key={item.slot}
-              color={getTypeColor(item.type.name)}
-            >
-              {item.type.name}
+            <PokemonTypeBox key={item.slot}>
+              <PokemonTypeImg
+                src={getTypeRenderImg(item.type.name)}
+                alt="pokemonImg"
+              ></PokemonTypeImg>
             </PokemonTypeBox>
           ))}
         </PokemonTypeContainer>

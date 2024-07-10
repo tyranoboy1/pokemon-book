@@ -29,6 +29,11 @@ export const PokemonImg = styled.img`
   object-fit: contain; /* 이미지 비율 유지하면서 컨테이너 내에 맞춤 */
   object-position: center; /* 이미지를 중앙에 위치 */
 `;
+export const PokemonTypeImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
 export const PokemonTagBox = styled.div`
   width: 100%;
   height: 20%;
@@ -40,22 +45,14 @@ export const PokemonTagBox = styled.div`
   }
 `;
 export const PokemonTypeContainer = styled.div`
-  height: 100%;
+  height: 22px;
   align-items: center;
   display: flex;
   gap: 10px;
 `;
-export const PokemonTypeBox = styled.div<{ color?: string }>`
-  font-size: 16px;
-  font-weight: 700;
-  border: 1px solid ${(props) => props.color || ""};
-  background-color: ${(props) => props.color || ""};
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80px;
-  height: 30px;
+export const PokemonTypeBox = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 export const PokemonNameBox = styled.div`
   width: 100%;

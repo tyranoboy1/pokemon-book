@@ -1,42 +1,61 @@
-export const getTypeColor = (pType: string): string => {
+import normal from "../assets/img/pokeType/normal.png";
+import water from "../assets/img/pokeType/water.png";
+import steel from "../assets/img/pokeType/steel.png";
+import rock from "../assets/img/pokeType/rock.png";
+import psychic from "../assets/img/pokeType/psychic.png";
+import poison from "../assets/img/pokeType/poison.png";
+import ice from "../assets/img/pokeType/ice.png";
+import ground from "../assets/img/pokeType/ground.png";
+import grass from "../assets/img/pokeType/grass.png";
+import ghost from "../assets/img/pokeType/ghost.png";
+import flying from "../assets/img/pokeType/flying.png";
+import fire from "../assets/img/pokeType/fire.png";
+import fighting from "../assets/img/pokeType/fighting.png";
+import fairy from "../assets/img/pokeType/fairy.png";
+import electric from "../assets/img/pokeType/electric.png";
+import dragon from "../assets/img/pokeType/dragon.png";
+import dark from "../assets/img/pokeType/dark.png";
+import bug from "../assets/img/pokeType/bug.png";
+
+export const getTypeRenderImg = (pType: string): string => {
   switch (pType) {
     case "normal":
-      return "#A8A77A";
+      return normal;
     case "fire":
-      return "#EE8130";
+      return fire;
     case "water":
-      return "#6390F0";
+      return water;
     case "electric":
-      return "#F7D02C";
+      return electric;
     case "grass":
-      return "#7AC74C";
+      return grass;
     case "ice":
-      return "#96D9D6";
+      return ice;
     case "fighting":
-      return "#C22E28";
+      return fighting;
     case "poison":
-      return "#A33EA1";
+      return poison;
     case "ground":
-      return "#E2BF65";
+      return ground;
     case "flying":
-      return "#A98FF3";
+      return flying;
     case "psychic":
-      return "#F95587";
+      return psychic;
     case "bug":
-      return "#A6B91A";
+      return bug;
     case "rock":
-      return "#B6A136";
+      return rock;
     case "ghost":
-      return "#735797";
+      return ghost;
     case "dragon":
-      return "#6F35FC";
+      return dragon;
     case "dark":
-      return "#705746";
+      return dark;
     case "steel":
-      return "#B7B7CE";
+      return steel;
     case "fairy":
-      return "#D685AD";
+      return fairy;
     default:
-      return "#000000";
+      return "";
   }
 };
