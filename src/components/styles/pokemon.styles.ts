@@ -130,6 +130,41 @@ export const LanguageButton = styled.button`
   font-size: 15px;
   font-weight: 700;
 `;
+export const FilterTypeButtonContainer = styled.div`
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+`;
+export const FilterTypeButtonBox = styled.div`
+  /* border-radius: 12px; */
+  width: 70%;
+  height: 100%;
+  padding: 0 30px;
+  align-items: center;
+  display: flex;
+  /* background-color: #d3d3d3; */
+  flex-wrap: wrap;
+  gap: 10px;
+
+  > img {
+    width: 100px;
+    height: 20px;
+    object-fit: cover; /* 이미지 비율 유지하면서 컨테이너 내에 맞춤 */
+    object-position: center; /* 이미지를 중앙에 위치 */
+    cursor: pointer;
+  }
+`;
+export const AllButton = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
+`;
 
 /** Common css */
 export const Text = styled.span<{

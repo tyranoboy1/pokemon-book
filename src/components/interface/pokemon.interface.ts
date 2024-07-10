@@ -4,9 +4,7 @@ export interface IPokemonData {
 }
 
 export interface IPokemonInfo {
-  id: number;
-  name?: string;
-  image?: string;
+  detailData: any;
 }
 
 export interface IPokemonCardTypes {
