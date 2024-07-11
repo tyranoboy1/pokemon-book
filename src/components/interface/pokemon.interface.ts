@@ -1,10 +1,11 @@
 export interface IPokemonData {
+  id: number;
   name: string;
   url: string;
 }
 
 export interface IPokemonInfo {
-  detailData: any;
+  pokemonName: string;
 }
 
 export interface IPokemonCardTypes {

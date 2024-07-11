@@ -13,22 +13,53 @@ import { useNavigate } from "react-router-dom";
 import { IPokemonInfo } from "./interface/pokemon.interface";
 
 import { getTypeRenderImg } from "../utils/pokemonUtil";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const PokemonCard = (props: IPokemonInfo) => {
-  const { detailData } = props;
+  const { pokemonName } = props;
+
+  const fetchPokemon = (pokemonName: string) => {
+    return axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .then((res) => res.data);
+  };
+
+  const fetchSpeciesPokemon = (pokemonName: string) => {
+    return axios
+      .get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
+      .then((res) => res.data);
+  };
+  const {
+    data: pokemonInfoData,
+    isLoading: isPokemonLoading,
+    isError: isPokemonError,
+  } = useQuery({
+    queryKey: ["pokemon", pokemonName],
+    queryFn: () => fetchPokemon(pokemonName),
+  });
+
+  const {
+    data: pokemonSpeciesData,
+    isLoading: isSpeciesLoading,
+    isError: isSpeciesError,
+  } = useQuery({
+    queryKey: ["pokemonSpecies", pokemonName],
+    queryFn: () => fetchSpeciesPokemon(pokemonName),
+  });
 
   const navigate = useNavigate();
 
   return (
-    <Card key={detailData?.id}>
+    <Card key={pokemonInfoData?.id}>
       <PokemonTagBox>
         <Text
           fontSize="14px"
           fontWeight="700"
           fontFamily="Galmuri"
-        >{`PN.${detailData?.id}`}</Text>
+        >{`PN.${pokemonInfoData?.id}`}</Text>
         <PokemonTypeContainer>
-          {detailData?.types?.map((item: any) => (
+          {pokemonInfoData?.types?.map((item: any) => (
             <PokemonTypeBox key={item.slot}>
               <PokemonTypeImg
                 src={getTypeRenderImg(item.type.name)}
@@ -40,14 +71,14 @@ const PokemonCard = (props: IPokemonInfo) => {
       </PokemonTagBox>
       <PokemonImg
         src={
-          detailData?.sprites?.versions?.["generation-v"]?.["black-white"]
-            .animated?.front_default
+          pokemonInfoData?.sprites?.versions?.["generation-v"]?.["black-white"]
+            .animated?.front_default || pokemonInfoData?.sprites?.front_default
         }
         alt="pokemonImg"
       ></PokemonImg>
       <PokemonNameBox>
         <Text fontSize="20px" fontWeight="700" fontFamily="Galmuri14">
-          {detailData?.name}
+          {pokemonInfoData?.name}
         </Text>
       </PokemonNameBox>
       <DetailButton onClick={() => navigate("/pokemon-detail")}>

@@ -13,7 +13,7 @@ import PokemonCard from "./PokemonCard";
 import PokemonBookHeader from "../layout/PokemonBookHeader";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { IPokemonInfo } from "./interface/pokemon.interface";
+import { IPokemonData, IPokemonInfo } from "./interface/pokemon.interface";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getTypeRenderImg } from "../utils/pokemonUtil";
@@ -43,48 +43,23 @@ const PokemonHome = () => {
   const [open, setOpen] = useState(false);
   const [filterType, setFilterType] = useState("");
 
-  const fetchPokemonDetails = async (id: number) => {
-    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    return res.data;
-  };
-  const fetchPokemonProperty = async (id: number) => {
-    const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon-species/${id}`
-    );
-    return res.data;
-  };
-  const getPokemonData = async (
-    pageParam: number,
-    filterType: string | null
-  ) => {
+  const getPokemonData = async (pageParam: number) => {
     const limit = 20; /** 한 페이지에 가져올 포캣몬 개수*/
     const offset = (pageParam - 1) * limit; /** 페이지당 offset 계산 */
     const res = await axios.get(
       `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
     );
-
-    const detailedResults = await Promise.all(
-      res.data.results.map(async (_: any, index: number) => {
-        const id = offset + index + 1;
-        const detailData = await fetchPokemonDetails(id);
-        const propertyData = await fetchPokemonProperty(id);
-        return {
-          id,
-          detailData,
-          propertyData,
-        };
-      })
-    );
-    const filteredResults = filterType
-      ? detailedResults.filter((pokemon) =>
-          pokemon.detailData.types.some(
-            (type: any) => type.type.name === filterType
-          )
-        )
-      : detailedResults;
+    const pokemonData = await res.data.results.map((ev: any, index: number) => {
+      const id = offset + index + 1;
+      return {
+        id,
+        name: ev.name,
+        url: ev.url,
+      };
+    });
 
     return {
-      results: filteredResults,
+      results: pokemonData,
       nextCursor: res.data.next && pageParam + 1,
     };
   };
@@ -95,11 +70,12 @@ const PokemonHome = () => {
   const { fetchNextPage, hasNextPage, isFetchingNextPage, data, status } =
     useInfiniteQuery({
       queryKey: ["pokemon", filterType],
-      queryFn: ({ pageParam = 1 }) => getPokemonData(pageParam, filterType),
+      queryFn: ({ pageParam = 1 }) => getPokemonData(pageParam),
       getNextPageParam: (lastPage) => lastPage.nextCursor,
       initialPageParam: 1,
     });
 
+  console.log("data", data);
   const endPointRef =
     useRef<HTMLDivElement>(
       null
@@ -131,6 +107,8 @@ const PokemonHome = () => {
     };
   }, [handleObserver]);
 
+  useEffect(() => {}, [filterType]);
+
   return (
     <>
       <PokemonBookHeader />
@@ -153,8 +131,8 @@ const PokemonHome = () => {
         </FilterTypeButtonContainer>
         <PokemonCardBox>
           {data?.pages.map((page) =>
-            page.results.map((pokemon) => (
-              <PokemonCard key={pokemon.id} detailData={pokemon.detailData} />
+            page.results.map((pokemon: IPokemonData) => (
+              <PokemonCard key={pokemon.url} pokemonName={pokemon.name} />
             ))
           )}
         </PokemonCardBox>
