@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 
 import PokemonDetail from "./PokemonDetail";
 import PokemonBookLayout from "../layout/PokemonBookLayout";
-import PokemonMyBook from "./PokemonMyBook";
 import ErrorPage from "./ErrorPage";
 import Home from "../page/Home";
 
@@ -13,8 +12,7 @@ const PokemonRouter = () => {
       <Routes>
         <Route element={<PokemonBookLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/pokemon-detail" element={<PokemonDetail />} />
-          <Route path="/pokemon-mybook" element={<PokemonMyBook />} />
+          <Route path="/pokemon-detail/:id" element={<PokemonDetail />} />
           <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>

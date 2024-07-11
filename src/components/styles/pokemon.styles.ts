@@ -4,12 +4,11 @@ import search from "../../assets/svg/search.svg";
 /** Pokemon Home css */
 export const PokemonBook = styled.div`
   width: 100%;
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 30px;
   background-color: #b0a8a0;
-  box-sizing: border-box;
 `;
 export const Card = styled.div`
   width: 330px;
@@ -91,8 +90,12 @@ export const TopBar = styled.div`
 `;
 /** Layout css */
 export const PokemonBookContainer = styled.div`
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   max-width: 1920px;
+  display: flex;
+  flex-direction: column;
 `;
 export const PokemonHeader = styled.div`
   width: 100%;
@@ -102,7 +105,7 @@ export const PokemonHeader = styled.div`
 export const HeaderBox = styled.div`
   width: 100%;
   display: flex;
-  height: 100px;
+  flex: 0 0 100px;
   padding: 0px 40px;
   justify-content: space-between;
   align-items: center;
@@ -195,4 +198,101 @@ export const PokemonSearchInput = styled.input`
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 30px 50px;
+`;
+
+/** Pokemon detail  */
+
+export const DetailPokemonContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background-color: #b0a8a0;
+`;
+export const DetailPokemonCardBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const DetailPokemonCard = styled.div`
+  width: 800px;
+  border-radius: 12px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fff;
+`;
+
+export const DetailPokemonCardContentBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+
+  > img {
+    width: 200px;
+    height: 160px;
+    object-fit: contain;
+    object-position: center;
+  }
+`;
+export const DetailPokemonCardTypeBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  > img {
+    margin-top: 30px;
+    width: 100px;
+    height: 30px;
+    object-fit: contain;
+    object-position: center;
+  }
+`;
+export const PokemonPositionBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  > img {
+    margin-top: 30px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    object-position: center;
+  }
+`;
+export const PokemonInfoBoxContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+`;
+
+export const PokemonInfoBox = styled.div`
+  flex: 1;
+  border-radius: 12px;
+  padding: 20px 20px;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+`;
+export const PokemonFlavorBox = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 20px 30px;
+  word-wrap: break-word; /* 긴 단어가 박스를 벗어나는 것을 방지하고 줄바꿈 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+`;
+export const TitleBox = styled.div<{ $paddingLeft?: string }>`
+  width: 100%;
+  padding-left: ${(props) => props.$paddingLeft || ""};
 `;

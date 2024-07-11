@@ -10,10 +10,9 @@ import {
   PokemonSearchInputBox,
 } from "./styles/pokemon.styles";
 import PokemonCard from "./PokemonCard";
-import PokemonBookHeader from "../layout/PokemonBookHeader";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { IPokemonData, IPokemonInfo } from "./interface/pokemon.interface";
+import { IPokemonData } from "./interface/pokemon.interface";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getTypeRenderImg } from "../utils/pokemonUtil";
@@ -75,7 +74,6 @@ const PokemonHome = () => {
       initialPageParam: 1,
     });
 
-  console.log("data", data);
   const endPointRef =
     useRef<HTMLDivElement>(
       null
@@ -107,11 +105,8 @@ const PokemonHome = () => {
     };
   }, [handleObserver]);
 
-  useEffect(() => {}, [filterType]);
-
   return (
     <>
-      <PokemonBookHeader />
       <PokemonBook>
         <PokemonSearchInputBox>
           <PokemonSearchInput placeholder="포켓몬 검색" />

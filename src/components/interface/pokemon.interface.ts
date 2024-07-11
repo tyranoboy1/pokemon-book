@@ -15,6 +15,14 @@ export interface IPokemonCardTypes {
     url: string;
   };
 }
+export interface IPokemonLanguageType {
+  language: IIanguageItem;
+  name: string;
+}
+interface IIanguageItem {
+  name: string;
+  url: string;
+}
 
 export interface IPokemonCardInfo {
   id: number;
