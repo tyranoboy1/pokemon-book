@@ -49,11 +49,9 @@ const PokemonCard = (props: IPokemonInfo) => {
   return (
     <Card key={pokemonInfoData?.id}>
       <PokemonTagBox>
-        <Text
-          fontSize="14px"
-          fontWeight="700"
-          fontFamily="Galmuri"
-        >{`PN.${pokemonInfoData?.id}`}</Text>
+        <Text fontSize="14px" fontWeight="700" fontFamily="Galmuri">
+          {pokemonInfoData ? `PN.${pokemonInfoData?.id}` : "PN."}
+        </Text>
         <PokemonTypeContainer>
           {pokemonInfoData?.types?.map((item: any) => (
             <PokemonTypeBox key={item.slot}>

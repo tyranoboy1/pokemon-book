@@ -41,6 +41,7 @@ const filterTypeArray = [
 const PokemonHome = () => {
   const [open, setOpen] = useState(false);
   const [filterType, setFilterType] = useState("");
+  const [inputext, setInputText] = useState("");
 
   const getPokemonData = async (pageParam: number) => {
     const limit = 20; /** 한 페이지에 가져올 포캣몬 개수*/

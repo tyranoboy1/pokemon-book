@@ -216,7 +216,7 @@ export const DetailPokemonCardBox = styled.div`
 `;
 
 export const DetailPokemonCard = styled.div`
-  width: 800px;
+  width: 1200px;
   border-radius: 12px;
   padding: 30px 20px;
   display: flex;
@@ -232,7 +232,6 @@ export const DetailPokemonCardContentBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-
   > img {
     width: 200px;
     height: 160px;
@@ -242,12 +241,12 @@ export const DetailPokemonCardContentBox = styled.div`
 `;
 export const DetailPokemonCardTypeBox = styled.div`
   width: 100%;
-  height: 100%;
+  flex: 0 50px;
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 10px;
   > img {
-    margin-top: 30px;
     width: 100px;
     height: 30px;
     object-fit: contain;
@@ -256,27 +255,26 @@ export const DetailPokemonCardTypeBox = styled.div`
 `;
 export const PokemonPositionBox = styled.div`
   width: 100%;
-  height: 100%;
+  flex: 1;
   display: flex;
   justify-content: center;
   gap: 3px;
   > img {
-    margin-top: 30px;
-    width: 150px;
-    height: 150px;
+    width: 140px;
     object-fit: contain;
     object-position: center;
   }
 `;
 export const PokemonInfoBoxContainer = styled.div`
   width: 100%;
-  height: 100%;
+  flex: 0 70px;
   display: flex;
   gap: 10px;
 `;
 
 export const PokemonInfoBox = styled.div`
-  flex: 1;
+  flex: 0.5;
+  margin-top: 10px;
   border-radius: 12px;
   padding: 20px 20px;
   display: flex;
@@ -284,10 +282,32 @@ export const PokemonInfoBox = styled.div`
   flex-direction: column;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 `;
+export const PokemonSkillBox = styled.div`
+  flex: 2.5;
+  margin-top: 10px;
+  border-radius: 12px;
+  padding: 20px 20px;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+`;
+export const PokemonSkillContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+`;
+export const PokemonSkillCard = styled.div`
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+`;
 export const PokemonFlavorBox = styled.div`
   margin-top: 10px;
   width: 100%;
   border-radius: 12px;
+  flex: 0 80px;
   padding: 20px 30px;
   word-wrap: break-word; /* 긴 단어가 박스를 벗어나는 것을 방지하고 줄바꿈 */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
