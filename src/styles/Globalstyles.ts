@@ -55,10 +55,17 @@ const GlobalStyles = createGlobalStyle`
         border: 0;
         font-size: 10px;
     }
+    html{
+      height: 100%;
+    }
+    #root{
+      height: 100%;
+    }
     body{
         line-height: 1;
         font-family: 'Noto Sans KR', sans-serif;
         vertical-align: baseline;
+        height: 100%;
     }
     ol, ul{
         list-style: none;

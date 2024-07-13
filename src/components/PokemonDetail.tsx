@@ -157,12 +157,12 @@ const PokemonDetail = () => {
                       )?.genus || "???"
                     }`}
                   </Text>
-                  <Text fontFamily="Galmuri">
-                    {`키: ${pokemonInfoData?.height || "???"}cm `}
-                  </Text>
-                  <Text fontFamily="Galmuri">
-                    {`몸무게: ${pokemonInfoData?.weight || "???"}kg`}
-                  </Text>
+                  <Text fontFamily="Galmuri">{`키: ${
+                    pokemonInfoData?.height || "???"
+                  }cm `}</Text>
+                  <Text fontFamily="Galmuri">{`몸무게: ${
+                    pokemonInfoData?.weight || "???"
+                  }kg`}</Text>
                 </PokemonInfoBox>
                 <PokemonSkillBox>
                   <Text fontFamily="Pop">Skill</Text>

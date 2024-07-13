@@ -212,8 +212,10 @@ export const PokemonSearchInput = styled.input`
 
 export const DetailPokemonContainer = styled.div`
   width: 100%;
-  height: 100%;
+  flex: 1;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
   background-color: #e2e2e2;
 `;
 export const DetailPokemonCardBox = styled.div`
@@ -221,6 +223,7 @@ export const DetailPokemonCardBox = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+  min-height: 100%;
   align-items: center;
 `;
 
@@ -241,9 +244,16 @@ export const DetailPokemonCardContentBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+
   > img {
-    width: 200px;
-    height: 160px;
+    width: 100%;
+    height: 100%;
+    @media (max-width: 1200px) {
+      max-width: 200px;
+      max-height: 90px;
+    }
+    max-width: 200px;
+    max-height: 180px;
     object-fit: contain;
     object-position: center;
   }
@@ -256,8 +266,11 @@ export const DetailPokemonCardTypeBox = styled.div`
   justify-content: center;
   gap: 10px;
   > img {
-    width: 100px;
-    height: 30px;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    max-width: 100px;
+    max-height: 30px;
     object-fit: contain;
     object-position: center;
   }
@@ -303,6 +316,9 @@ export const PokemonInfoBox = styled.div`
   margin-top: 10px;
   border-radius: 12px;
   padding: 20px 20px;
+  @media (max-width: 481px) {
+    gap: 7px;
+  }
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -321,17 +337,20 @@ export const PokemonSkillBox = styled.div`
 export const PokemonSkillContainer = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
   @media (max-width: 1200px) {
     gap: 10px;
     flex-direction: column;
   }
-  display: flex;
 `;
 export const PokemonSkillCard = styled.div`
   flex: 1;
   display: flex;
   gap: 10px;
   flex-direction: column;
+  > div {
+    flex: 1;
+  }
 `;
 export const PokemonFlavorBox = styled.div`
   margin-top: 10px;
