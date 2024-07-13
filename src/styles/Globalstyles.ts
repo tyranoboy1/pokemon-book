@@ -3,16 +3,7 @@ import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
-    #root {
-      height: 100%;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-}
-    @font-face {
+  @font-face {
     font-family: "Noto Sans KR";
     font-weight: 300;
     src: url('/font/NotoSans-Light.ttf') format("truetype");
@@ -66,7 +57,6 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         line-height: 1;
-        margin-bottom: 100px;
         font-family: 'Noto Sans KR', sans-serif;
         vertical-align: baseline;
     }

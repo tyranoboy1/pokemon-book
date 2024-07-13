@@ -1,4 +1,4 @@
-import PokemonRouter from "./components/PokemonRouter";
+import PokemonRouter from "./route/PokemonRouter";
 
 const App = () => {
   return <PokemonRouter />;

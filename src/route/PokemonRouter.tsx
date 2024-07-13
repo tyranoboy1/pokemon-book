@@ -1,9 +1,7 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
-
-import PokemonDetail from "./PokemonDetail";
+import PokemonDetail from "../components/PokemonDetail";
 import PokemonBookLayout from "../layout/PokemonBookLayout";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "../components/ErrorPage";
 import Home from "../page/Home";
 
 const PokemonRouter = () => {

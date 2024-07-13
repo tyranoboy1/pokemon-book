@@ -1,14 +1,20 @@
 import styled from "styled-components";
 import search from "../../assets/svg/search.svg";
+import { typeColors } from "../../\bconstants/typeColors";
+import { hexToRGBA } from "../../utils/pokemonUtil";
 
 /** Pokemon Home css */
-export const PokemonBook = styled.div`
+export const PokemonBook = styled.div<{ $filterType: string }>`
   width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 30px;
-  background-color: #b0a8a0;
+  background-color: ${(props) => {
+    const colorHex = typeColors[props.$filterType] || "#E2E2E2";
+    const alpha = typeColors[props.$filterType] ? 0.3 : 1;
+    return hexToRGBA(colorHex, alpha);
+  }};
 `;
 export const Card = styled.div`
   width: 330px;
@@ -63,6 +69,7 @@ export const PokemonCardBox = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  margin-top: 30px;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
@@ -94,6 +101,7 @@ export const PokemonBookContainer = styled.div`
   height: 100%;
   margin: 0 auto;
   max-width: 1920px;
+  min-width: 480px;
   display: flex;
   flex-direction: column;
 `;
@@ -125,21 +133,21 @@ export const TranslateBox = styled.div`
     height: 30px;
   }
 `;
-export const LanguageButton = styled.button`
+export const LanguageButton = styled.button<{ $isActive: boolean }>`
   border-radius: 50%;
   &:hover {
     background-color: #cfffe5;
   }
+
+  background-color: ${(props) => (props.$isActive ? "#cfffe5" : "")};
   font-size: 15px;
   font-weight: 700;
 `;
 export const FilterTypeButtonContainer = styled.div`
   width: 100%;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
 `;
 export const FilterTypeButtonBox = styled.div`
   /* border-radius: 12px; */
@@ -164,8 +172,8 @@ export const AllButton = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #000;
-  color: #fff;
+  background-color: #b0a8a0;
+  color: #000;
   font-weight: 700;
 `;
 
@@ -206,20 +214,21 @@ export const DetailPokemonContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 30px;
-  background-color: #b0a8a0;
+  background-color: #e2e2e2;
 `;
 export const DetailPokemonCardBox = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const DetailPokemonCard = styled.div`
-  width: 1200px;
   border-radius: 12px;
   padding: 30px 20px;
   display: flex;
+  width: 70%;
   flex-direction: column;
   height: 100%;
   background-color: #fff;
@@ -257,10 +266,24 @@ export const PokemonPositionBox = styled.div`
   width: 100%;
   flex: 1;
   display: flex;
-  justify-content: center;
   gap: 3px;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-content: center;
+  }
+  @media (max-width: 630px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-content: center;
+  }
   > img {
-    width: 140px;
+    width: 100px;
+    margin-top: 10px;
     object-fit: contain;
     object-position: center;
   }
@@ -269,6 +292,9 @@ export const PokemonInfoBoxContainer = styled.div`
   width: 100%;
   flex: 0 70px;
   display: flex;
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
   gap: 10px;
 `;
 
@@ -295,6 +321,10 @@ export const PokemonSkillBox = styled.div`
 export const PokemonSkillContainer = styled.div`
   width: 100%;
   height: 100%;
+  @media (max-width: 1200px) {
+    gap: 10px;
+    flex-direction: column;
+  }
   display: flex;
 `;
 export const PokemonSkillCard = styled.div`

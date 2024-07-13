@@ -19,20 +19,34 @@ import { getTypeRenderImg } from "../utils/pokemonUtil";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/slices";
 
 const PokemonCard = (props: IPokemonInfo) => {
   const { pokemonName } = props;
-
-  const fetchPokemon = (pokemonName: string) => {
-    return axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-      .then((res) => res.data);
+  const language = useSelector((state: RootState) => state.pokemon.language);
+  const fetchPokemon = async (pokemonName: string) => {
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+      );
+      return response.data;
+    } catch (error) {
+      console.log("error", error);
+      return null;
+    }
   };
 
-  const fetchSpeciesPokemon = (pokemonName: string) => {
-    return axios
-      .get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
-      .then((res) => res.data);
+  const fetchSpeciesPokemon = async (pokemonName: string) => {
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
+      );
+      return response.data;
+    } catch (error) {
+      console.log("error", error);
+      return null;
+    }
   };
   const { data: pokemonInfoData, isLoading: isPokemonLoading } = useQuery({
     queryKey: ["pokemon", pokemonName],
@@ -80,7 +94,7 @@ const PokemonCard = (props: IPokemonInfo) => {
         <Text fontSize="20px" fontWeight="700" fontFamily="Galmuri14">
           {
             pokemonSpeciesData?.names?.find(
-              (ev: IPokemonLanguageType) => ev.language.name === "ko"
+              (ev: IPokemonLanguageType) => ev.language.name === language
             )?.name
           }
         </Text>
