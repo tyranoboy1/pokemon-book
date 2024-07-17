@@ -5,7 +5,7 @@ interface IPokemonSlceInitial {
 }
 
 const initialState: IPokemonSlceInitial = {
-  language: "",
+  language: "ko",
 };
 export const pokemonSlice = createSlice({
   name: "pokemonSlce",

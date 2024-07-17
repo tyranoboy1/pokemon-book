@@ -6,19 +6,19 @@ const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: "Noto Sans KR";
     font-weight: 300;
-    src: url('/font/NotoSans-Light.ttf') format("truetype");
+    src: url('/fonts/NotoSansKR-Light.ttf') format("truetype");
   }
 
   @font-face {
     font-family: "Noto Sans KR";
     font-weight: 400;
-    src: url('/font/NotoSans-Regular.ttf') format("truetype");
+    src: url('/fonts/NotoSansKR-Regular.ttf') format("truetype");
   }
 
   @font-face {
     font-family: "Noto Sans KR";
     font-weight: 500;
-    src: url('/fonts/NotoSans-Medium.ttf') format("truetype");
+    src: url('/fonts/NotoSansKR-Medium.ttf') format("truetype");
   }
   @font-face {
     font-family: "Pop";
@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: "Noto Sans KR";
     font-weight: 700;
-    src: url('/fonts/NotoSans-Bold.ttf') format("truetype");
+    src: url('/fonts/NotoSansKR-Bold.ttf') format("truetype");
   }
   @font-face {
     font-family: "Galmuri";
