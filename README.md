@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Pokemon-Book
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 사용 기술
 
-## Available Scripts
+- React
+- Typescript
+- Redux-Toolkit
+- TanStack-Query
+- Styled-Components
 
-In the project directory, you can run:
+## 주요 기능
 
-### `yarn start`
+- Infinite-Scroll 을 통해 불러온 포켓몬의 리스트를 보여줌
+- Local-Storage와 Store를 사용하여 다국어 기능 지원
+- 포켓몬 Type 버튼을 통한 필터 기능
+- Router Params를 활용, 포켓몬의 상세 정보를 볼수 있는 Detail 페이지
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 프로젝트 실행
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Repository `clone` 받기
 
-### `yarn test`
+```
+https://github.com/tyranoboy1/pokemon-book.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. `yarn` Dependencies 의존성 설치
 
-### `yarn build`
+```
+yarn
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Project 실행
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 추가 기능(추후에 적용)
 
-### `yarn eject`
+1. firebase를 통한 로그인 기능
+2. 원하는 포켓몬을 북마크 기능
+3. 포켓몬 검색 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 보완할 점
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Api 함수 분리 후 재사용
+2. 디자인 보완
