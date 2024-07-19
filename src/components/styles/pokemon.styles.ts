@@ -102,6 +102,7 @@ export const PokemonBookContainer = styled.div`
   margin: 0 auto;
   max-width: 1920px;
   min-width: 480px;
+  position: relative;
   display: flex;
   flex-direction: column;
 `;
@@ -109,6 +110,15 @@ export const PokemonHeader = styled.div`
   width: 100%;
   height: 100px;
   background-color: #c0c0c0;
+`;
+export const PokemonFooter = styled.div`
+  width: 100%;
+  height: 80px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
 `;
 export const HeaderBox = styled.div`
   width: 100%;
