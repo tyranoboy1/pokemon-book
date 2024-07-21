@@ -15,7 +15,7 @@
 - Infinite-Scroll 을 통해 불러온 포켓몬의 리스트를 보여줌
 - Local-Storage와 Store를 사용하여 다국어 기능 지원
 - 포켓몬 Type 버튼을 통한 필터 기능
-- Router Params를 활용, 포켓몬의 상세 정보를 볼수 있는 Detail 페이지
+- Router Params를 활용, 포켓볼 클릭 시 포켓몬의 상세 정보를 볼수 있는 Detail 페이지
 
 ## 프로젝트 실행
 
